@@ -14,7 +14,7 @@ abstract class AbstractKoma {
   }
 
   void draw() {
-    String komaImage = "";
+String komaImage = "";
     if (this.team==0 && this.kStat.active) komaImage = this.name+"A.png";
     else if (this.team==1 && this.kStat.active) komaImage = this.name+"B.png";
     else return;
@@ -22,5 +22,11 @@ abstract class AbstractKoma {
     PImage img = loadImage(komaImage);
     image(img, SQUARESIZE*this.x+2, this.y*SQUARESIZE+2, SQUARESIZE-4, SQUARESIZE-4);
 
+    if (this.kStat.selected) this.drawSelected();
+
+  }
+   void drawSelected() {
+    fill(#FF0000, SQUARESIZE);
+    rect(this.x*SQUARESIZE, this.y*SQUARESIZE, SQUARESIZE, SQUARESIZE);
   }
 }
